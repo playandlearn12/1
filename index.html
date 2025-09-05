@@ -6,7 +6,7 @@
     <title>English Learning Adventure</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Cairo:wght@400;600;700&family=Luckiest+Guy&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -18,7 +18,6 @@
             --danger-hue: 0; /* Red */
             --warning-hue: 45; /* Yellow */
             
-            /* Brighter, more cartoony colors */
             --primary-color: hsl(var(--primary-hue), 85%, 65%);
             --primary-dark: hsl(var(--primary-hue), 85%, 55%);
             --secondary-color: hsl(var(--secondary-hue), 70%, 58%);
@@ -104,10 +103,13 @@
             backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
             border-radius: 30px; 
             box-shadow: 0 10px 20px rgba(0,0,0,0.1), 0 5px 40px rgba(0,0,0,0.1);
-            padding: 2.5rem; width: 100%; max-width: 500px; 
+            padding: 2rem; width: 100%; max-width: 500px; 
             text-align: center; position: relative; overflow: hidden;
             border: 2px solid rgba(255, 255, 255, 0.6);
             animation: fadeInUp 0.6s ease-out;
+        }
+        @media (max-width: 600px) {
+            .card { padding: 1.5rem; }
         }
         
         @keyframes fadeInUp {
@@ -121,9 +123,8 @@
             background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
         }
         
-        /* === NEW CARTOONY BUTTONS === */
         .btn {
-            padding: 0.85rem 1.5rem; border-radius: 50px; 
+            padding: 0.8rem 1.5rem; border-radius: 50px; 
             font-weight: 700; font-size: 1.1rem; cursor: pointer;
             transition: all 0.2s ease-out; border: none; 
             display: inline-flex; align-items: center; justify-content: center;
@@ -150,6 +151,15 @@
         .btn-danger { background: var(--danger-color); color: white; box-shadow: 0 4px 0 0 hsl(var(--danger-hue), 84%, 45%); }
         .btn-danger:hover:not(:disabled) { background: hsl(var(--danger-hue), 90%, 70%); }
         .btn-danger:active:not(:disabled) { box-shadow: 0 0px 0 0 hsl(var(--danger-hue), 84%, 45%); }
+        
+        .btn-warning { background: var(--warning-color); color: white; box-shadow: 0 4px 0 0 hsl(var(--warning-hue), 80%, 40%); }
+        .btn-warning:hover:not(:disabled) { background: hsl(var(--warning-hue), 95%, 65%); }
+        .btn-warning:active:not(:disabled) { box-shadow: 0 0px 0 0 hsl(var(--warning-hue), 80%, 40%); }
+
+        @media (max-width: 600px) {
+            .btn { font-size: 1rem; padding: 0.7rem 1.2rem; }
+            .btn.py-4.text-2xl { font-size: 1.5rem !important; padding-top: 0.8rem; padding-bottom: 0.8rem; }
+        }
 
         .input-field {
             width: 100%; padding: 0.85rem; border-radius: 15px; 
@@ -167,7 +177,6 @@
         .password-toggle { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #9ca3af; font-size: 1.2rem; transition: color 0.3s; }
         .password-toggle:hover { color: var(--primary-color); }
         
-        /* === NEW CARTOONY STAGES PATH (MOBILE FIRST) === */
         #stages-path-container {
             width: 100%; height: 100%; position: relative;
             overflow-y: auto; padding: 4rem 1rem;
@@ -221,7 +230,6 @@
             position: relative; /* to sit on top of icon */
         }
         
-        /* Desktop path line */
         @media (min-width: 768px) {
              .stages-path-wrapper::before {
                 content: ''; position: absolute; top: 60px; bottom: 60px; left: 50%;
@@ -235,12 +243,11 @@
             .stage-node:nth-child(even) { align-self: flex-end; margin-right: 20%; }
         }
 
-        /* === IMPROVED TIMER === */
         #timer-display {
             background: linear-gradient(45deg, hsl(var(--warning-hue), 95%, 65%), hsl(var(--warning-hue), 95%, 55%));
             color: white;
             box-shadow: 0 5px 0 0 hsl(var(--warning-hue), 80%, 40%), 0 8px 15px rgba(0,0,0,0.2);
-            font-size: 1.8rem; font-weight: 700;
+            font-size: 1.5rem; font-weight: 700;
             padding: 0.7rem 1.5rem; border-radius: 50px;
             border: 4px solid white;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
@@ -254,7 +261,6 @@
             50% { transform: scale(1.1); background-color: var(--danger-color); }
         }
         
-        /* Modals and Effects */
         .modal {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
             background-color: rgba(0,0,0,0.5);
@@ -273,7 +279,6 @@
         .color-tool:hover { transform: scale(1.1); box-shadow: 0 6px 12px rgba(0,0,0,0.3); }
         .color-tool.selected { transform: scale(1.2); border-color: var(--primary-color); box-shadow: 0 0 0 4px hsla(var(--primary-hue), 70%, 60%, 0.3); }
         
-        /* === IMPROVED ACTIVITY UI === */
         #activity-container {
             animation: activity-enter 0.5s ease-out forwards;
         }
@@ -283,7 +288,8 @@
         }
 
         #activity-container h2.activity-title {
-            font-size: 2.2rem; font-weight: 700; margin-bottom: 2rem;
+            font-size: clamp(1.5rem, 5vw, 2.2rem); 
+            font-weight: 700; margin-bottom: 2rem;
             color: white;
             text-shadow: 2px 2px 0 var(--primary-dark), 2px 2px 5px rgba(0,0,0,0.3);
             background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
@@ -316,12 +322,10 @@
         .toast-notification { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, var(--success-color), #2e7d32); color: white; padding: 1rem 2rem; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); z-index: 10001; font-size: 1.2rem; font-weight: 600; animation: fadeInOut 4s ease-in-out; }
         @keyframes fadeInOut { 0%, 100% { opacity: 0; top: 0px; } 10%, 90% { opacity: 1; top: 20px; } }
         
-        /* Win/Coin Effects */
         .effect-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 10000; }
         .falling-star { position: absolute; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23FFD700"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>'); background-size: contain; animation: fall 5s linear forwards; }
         @keyframes fall { to { transform: translateY(110vh) rotate(360deg); opacity: 0; } }
         
-        /* === NEW ENHANCED COIN EFFECT === */
         .flying-coin { 
             position: absolute; 
             width: 40px; 
@@ -351,15 +355,10 @@
             position: absolute; color: var(--accent-color); font-size: 30px;
             transition: all 1s cubic-bezier(0.5, -0.5, 1, 1);
         }
-
-        .coloring-canvas svg { max-width: 100%; max-height: 400px; cursor: pointer; }
-        .coloring-canvas svg path { transition: fill 0.2s ease; }
-        .coloring-canvas svg path:hover { stroke: var(--primary-color); stroke-width: 3px; }
         
         .canvas-container { position: relative; width: 100%; max-width: 500px; height: 250px; margin: 0 auto; cursor: crosshair; border: 2px dashed #ccc; border-radius: 15px; background-color: rgba(255, 255, 255, 0.7); box-shadow: 0 4px 10px rgba(0,0,0,0.1); overflow: hidden; }
         .canvas-container canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
         
-        /* === NEW VOCABULARY PAGE STYLES === */
         #vocabulary-page {
             background: linear-gradient(to bottom right, #89f7fe, #66a6ff);
             background-size: 400% 400%;
@@ -446,7 +445,6 @@
         body.arabic .fa-arrow-left { transform: scaleX(-1); }
         body.arabic .question-audio-btn { margin-left: 0; margin-right: 1rem; }
         
-        /* Wrong answer / Time's up effect */
         .screen-flash { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 10002; pointer-events: none; animation: flash-anim 0.7s ease-out forwards; }
         .screen-flash.red { background-color: hsla(var(--danger-hue), 84%, 60%, 0.4); }
         @keyframes flash-anim {
@@ -458,58 +456,66 @@
         .particle { position: fixed; pointer-events: none; opacity: 0; z-index: 9999; animation: particle-animation 1s ease-out forwards; }
         @keyframes particle-animation { 0% { transform: translate(0, 0); opacity: 1; } 100% { transform: translate(var(--tx), var(--ty)); opacity: 0; } }
 
-        /* Drag and Drop styles */
         .draggable-word, .draggable { cursor: grab; }
         .dragging { opacity: 0.5; background: #c7d2fe; transform: scale(1.1); }
         .drop-zone { min-height: 80px; border: 3px dashed var(--secondary-color); background: hsla(var(--secondary-hue), 50%, 80%, 0.3); }
         .activity-list .drag-over { border-top: 2px dashed var(--primary-color); }
         
-        /* FIX for Arrange Words activity in RTL */
         body.arabic .drop-zone, body.arabic #word-bank {
             direction: ltr;
         }
 
-        /* === NEW Encouragement Modal Styles === */
         #encouragement-modal .card {
-            border: 4px solid var(--warning-color);
-            background: linear-gradient(135deg, #ffffff, #fefde8);
+            border-width: 8px;
+            border-style: solid;
+            border-image-slice: 1;
+            background: linear-gradient(135deg, #ffffff, #fffde7);
+            max-width: 450px;
         }
-        .encouragement-card {
+        #encouragement-modal .encouragement-card {
             display: flex; flex-direction: column; align-items: center;
-            gap: 1rem; font-size: 1.8rem; font-weight: 700;
+            gap: 1rem; 
+            font-weight: 700;
             color: var(--primary-dark);
             text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        #encouragement-modal #encouragement-message {
+            font-size: clamp(1.5rem, 5vw, 2.2rem);
+            font-family: 'Luckiest Guy', cursive;
+        }
+        #encouragement-modal #encouragement-icon-container {
+             transform: scale(1.2);
+             margin-bottom: 0.5rem;
         }
         @keyframes bounceIn {
             0% { transform: scale(0.5); opacity: 0; }
             60% { transform: scale(1.1); opacity: 1; }
-            80% { transform: scale(0.9); }
+            80% { transform: scale(0.95); }
             100% { transform: scale(1); }
         }
         .animate-bounce-in {
             animation: bounceIn 0.6s ease-out forwards;
         }
 
-        /* === NEW START SCREEN STYLES === */
         #start-page .game-title {
-            font-size: 4rem;
-            font-weight: 700;
+            font-family: 'Luckiest Guy', cursive;
+            font-size: clamp(3.5rem, 15vw, 7rem);
+            font-weight: 400;
             color: #fff;
             text-align: center;
             animation: shine 5s ease-in-out infinite;
-            background: linear-gradient(135deg, #ffde59, #ff914d, #f25278, #6f58e9, #59bfff);
+            background: linear-gradient(135deg, #ffde59, #ff914d, #f25278, #6f58e9, #59bfff, #ffde59);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-size: 400% 400%;
-            text-shadow: 0 0 10px rgba(255,255,255,0.3), 
-                         0 0 20px rgba(255,255,255,0.2), 
-                         0 0 40px rgba(255,193,7,0.3);
+            background-size: 300% 300%;
+            -webkit-text-stroke: 3px rgba(0,0,0,0.2);
+            text-shadow: 
+                0px 5px 0px rgba(255, 255, 255, 0.8),
+                0px 15px 25px rgba(0,0,0,0.3);
+            line-height: 1.1;
+            transform: rotate(-2deg);
         }
-        @media (min-width: 768px) {
-            #start-page .game-title {
-                font-size: 6rem;
-            }
-        }
+        
         @keyframes shine {
             0%{background-position:0% 50%}
             50%{background-position:100% 50%}
@@ -519,20 +525,102 @@
         #info-modal .card {
             text-align: left;
             max-width: 600px;
+            border: 4px solid var(--secondary-color);
+            background: linear-gradient(to bottom right, #e0f7fa, #e8f5e9);
         }
-
         #info-modal h2 {
             text-align: center;
+            background: var(--secondary-color);
+            color: white;
+            padding: 1rem;
+            margin: -2rem -2rem 1.5rem -2rem;
+            border-radius: 25px 25px 0 0;
+            font-size: 1.8rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            border-bottom: 5px solid hsl(var(--secondary-hue), 60%, 40%);
         }
-
         #info-modal p {
             white-space: pre-wrap;
             word-wrap: break-word;
             max-height: 60vh;
             overflow-y: auto;
-            background-color: rgba(0,0,0,0.03);
+            background-color: rgba(255,255,255,0.7);
             padding: 1rem;
             border-radius: 15px;
+            font-size: 1.1rem;
+            color: #334155;
+        }
+
+        #file-history-modal .vocab-card { cursor: pointer; }
+        #file-history-modal .vocab-card h3 { font-size: 1rem; word-break: break-all; }
+        .upload-container {
+            display: grid;
+            grid-template-columns: 1fr auto auto;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        .upload-btn, .history-btn {
+            padding: 0.5rem;
+            height: 100%;
+            min-width: 50px;
+        }
+
+        /* --- Matching Activity Styles --- */
+        .match-container-wrapper { position: relative; }
+        .match-container { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; align-items: center; }
+        .match-column { display: flex; flex-direction: column; gap: 1rem; }
+        .match-item { 
+            display: flex; align-items: center; justify-content: center; min-height: 80px;
+            padding: 0.5rem; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border: 3px solid transparent; transition: all 0.3s ease; cursor: pointer;
+            background-color: white;
+        }
+        .match-item:hover { transform: scale(1.05); }
+        .match-item.selected { border-color: var(--accent-color); transform: scale(1.08); box-shadow: 0 0 15px hsla(var(--accent-hue), 95%, 60%, 0.5); }
+        .match-item.matched { cursor: default; background-color: #e0ffe0; border-color: var(--success-color); opacity: 0.7; }
+        .match-item img { max-height: 70px; max-width: 100%; object-fit: contain; }
+        .connector-svg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; }
+        .connector-svg line { stroke-width: 5; stroke-linecap: round; transition: all 0.3s ease; }
+        .connector-svg .correct-line { stroke: var(--success-color); }
+        .connector-svg .incorrect-line { stroke: var(--danger-color); animation: fade-out 0.5s forwards; }
+        @keyframes fade-out { to { opacity: 0; } }
+
+        /* --- Trace Activity Styles --- */
+        .trace-container {
+            position: relative;
+            width: 100%; max-width: 500px; height: 250px;
+            margin: 0 auto; cursor: crosshair;
+            border: 2px dashed #ccc; border-radius: 15px;
+            background-color: rgba(255, 255, 255, 0.7);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .trace-container svg, .trace-container canvas {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+        }
+        .trace-text-outline {
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 700;
+            font-size: 100px;
+            fill: none;
+            stroke: #d1d5db;
+            stroke-width: 4;
+            stroke-dasharray: 10 10;
+        }
+        .trace-text-guide {
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 700;
+            font-size: 100px;
+            fill: none;
+            stroke: hsla(var(--primary-hue), 85%, 65%, 0.5);
+            stroke-width: 18;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: trace-guide-anim 3s ease-in-out 0.5s forwards;
+        }
+        @keyframes trace-guide-anim {
+            to { stroke-dashoffset: 0; }
         }
     </style>
 </head>
@@ -551,7 +639,7 @@
     <div id="toast-container"></div>
     <div id="effect-container" class="effect-container"></div>
     <button id="lang-toggle" class="lang-btn"><i class="fas fa-language"></i><span class="lang-text">العربية</span></button>
-    <button id="sound-toggle" class="sound-btn"><i class="fas fa-volume-up"></i></button>
+    <button id="sound-toggle" class="sound-btn"><i class="fas fa-music"></i></button>
     
     <div id="loader" class="page">
         <div class="text-center">
@@ -641,11 +729,11 @@
         <div class="w-full h-screen flex flex-col">
             <header class="flex justify-between items-center p-4 bg-white/80 backdrop-blur-sm shadow-md w-full z-10">
                 <h2 class="text-xl font-bold" style="color: var(--primary-dark);"><i class="fas fa-user-circle mr-2"></i><span data-i18n="welcomeStudent">Welcome,</span> <span id="student-name"></span></h2>
-                <div class="flex items-center gap-4">
-                    <div id="student-coins" class="text-xl font-bold text-yellow-600 bg-yellow-100 px-4 py-2 rounded-full shadow-inner"><i class="fas fa-coins mr-2"></i><span class="coins-count">0</span></div>
-                    <button id="shop-btn" class="btn" style="background: var(--accent-color); color: white; box-shadow: 0 4px 0 0 hsl(var(--accent-hue), 95%, 45%);"><i class="fas fa-store"></i></button>
-                    <button id="back-to-grades" class="btn btn-secondary"><i class="fas fa-exchange-alt"></i></button>
-                    <button id="main-logout-btn" class="btn btn-danger"><i class="fas fa-sign-out-alt"></i></button>
+                <div class="flex items-center gap-2 md:gap-4">
+                    <div id="student-coins" class="text-lg md:text-xl font-bold text-yellow-600 bg-yellow-100 px-3 py-2 rounded-full shadow-inner"><i class="fas fa-coins mr-2"></i><span class="coins-count">0</span></div>
+                    <button id="shop-btn" class="btn btn-sm md:btn-md" style="background: var(--accent-color); color: white; box-shadow: 0 4px 0 0 hsl(var(--accent-hue), 95%, 45%);"><i class="fas fa-store"></i></button>
+                    <button id="back-to-grades" class="btn btn-secondary btn-sm md:btn-md"><i class="fas fa-exchange-alt"></i></button>
+                    <button id="main-logout-btn" class="btn btn-danger btn-sm md:btn-md"><i class="fas fa-sign-out-alt"></i></button>
                 </div>
             </header>
             <div id="stages-path-container">
@@ -671,6 +759,25 @@
     <div id="admin-cms-page" class="page hidden">
        <div class="container mx-auto w-full max-w-4xl py-8">
             <h1 class="text-4xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-teal-500 text-center" data-i18n="cmsTitle">Curriculum Management System (CMS)</h1>
+            
+            <div class="bg-white/90 p-8 rounded-2xl shadow-lg backdrop-blur-sm space-y-6 mb-8 text-left">
+                <h2 class="text-2xl font-bold text-center" data-i18n="githubConfig"><i class="fab fa-github mr-2"></i>GitHub Configuration</h2>
+                <p class="text-sm text-gray-600" data-i18n="githubConfigNote">These settings are required for the file upload feature and are saved locally in your browser.</p>
+                <div>
+                    <label for="github-username" class="block font-bold mb-2">GitHub Username:</label>
+                    <input type="text" id="github-username" class="input-field" placeholder="e.g., mohamed-ali">
+                </div>
+                <div>
+                    <label for="github-repo" class="block font-bold mb-2">Repository Name:</label>
+                    <input type="text" id="github-repo" class="input-field" placeholder="e.g., my-game-assets">
+                </div>
+                <div>
+                    <label for="github-token" class="block font-bold mb-2">Personal Access Token (classic):</label>
+                    <input type="password" id="github-token" class="input-field" placeholder="ghp_xxxxxxxxxxxxxxxxx">
+                </div>
+                <button id="save-github-config-btn" class="btn btn-primary w-full"><i class="fas fa-save mr-2"></i> <span data-i18n="saveConfig">Save Configuration</span></button>
+            </div>
+
             <div class="bg-white/90 p-8 rounded-2xl shadow-lg backdrop-blur-sm space-y-6 mb-8">
                 <h2 class="text-2xl font-bold" data-i18n="curriculumStages"><i class="fas fa-book-open mr-2"></i>Curriculum Stages</h2>
                 <div>
@@ -698,7 +805,7 @@
             </div>
             <div class="bg-white/90 p-8 rounded-2xl shadow-lg backdrop-blur-sm space-y-6">
                 <h2 class="text-2xl font-bold" data-i18n="soundManagement"><i class="fas fa-volume-up mr-2"></i>Game Sound Management</h2>
-                <p class="text-sm text-gray-500" data-i18n="soundNote">Note: Please use direct audio links or Base64 data URLs. You can convert audio files to Base64 using online tools.</p>
+                <p class="text-sm text-gray-500" data-i18n="soundNote">Note: Control sound volume below. You can paste direct links or upload files to GitHub (requires setup).</p>
                 <div id="sound-url-manager" class="space-y-4 text-left"></div>
                 <button id="save-sounds-btn" class="btn btn-primary w-full"><i class="fas fa-save mr-2"></i> <span data-i18n="saveSounds">Save Sound URLs</span></button>
             </div>
@@ -722,6 +829,7 @@
             <div id="activity-header" class="flex justify-between items-center mb-4 text-2xl font-bold">
                 <div id="timer-display" class="hidden"><i class="fas fa-clock mr-2"></i><span id="timer-countdown"></span></div>
                 <div id="activity-coins" class="text-xl font-bold text-yellow-600 bg-yellow-100 px-4 py-2 rounded-full shadow-inner"><i class="fas fa-coins mr-2"></i><span class="coins-count">0</span></div>
+                <button id="pause-game-btn" class="btn btn-warning"><i class="fas fa-pause"></i></button>
                 <button id="activity-shop-btn" class="btn" style="background: var(--accent-color); color: white; box-shadow: 0 4px 0 0 hsl(var(--accent-hue), 95%, 45%);"><i class="fas fa-store"></i></button>
                 <div id="inventory-display" class="flex gap-4"></div>
             </div>
@@ -749,7 +857,6 @@
                 <option value="multiple_choice" data-i18n="multipleChoice">Multiple Choice</option>
                 <option value="complete_sentence" data-i18n="completeSentence">Complete Sentence</option>
                 <option value="matching" data-i18n="matching">Matching</option>
-                <option value="coloring" data-i18n="coloring">Coloring (Image)</option>
                 <option value="color_word" data-i18n="colorWord">Color the Word</option>
                 <option value="arrange_words" data-i18n="arrangeWords">Arrange Words</option>
                 <option value="trace_word" data-i18n="traceWord">Trace Word</option>
@@ -800,14 +907,14 @@
 
     <div id="encouragement-modal" class="modal hidden">
         <div class="card encouragement-card animate-bounce-in">
-            <div id="encouragement-icon-container" class="relative flex items-center justify-center mb-4"></div>
+            <div id="encouragement-icon-container" class="relative flex items-center justify-center"></div>
             <p id="encouragement-message" class="text-2xl"></p>
         </div>
     </div>
 
     <div id="info-modal" class="modal hidden">
         <div class="card">
-            <h2 class="text-3xl font-bold mb-6" data-i18n="gameInfo">Game Info</h2>
+            <h2 data-i18n="gameInfo">Game Info</h2>
             <p id="info-modal-text"></p>
             <button id="close-info-btn" class="btn btn-secondary mt-8 w-full"><i class="fas fa-times mr-2"></i><span data-i18n="close">Close</span></button>
         </div>
@@ -819,11 +926,21 @@
             <button id="resume-game-btn" class="btn btn-primary w-full py-4 text-xl"><i class="fas fa-play mr-2"></i><span data-i18n="resume">Resume</span></button>
         </div>
     </div>
+
+    <div id="file-history-modal" class="modal hidden">
+         <div class="card w-full max-w-4xl">
+            <h2 class="text-2xl font-bold mb-4" data-i18n="fileHistory">File History</h2>
+            <div id="file-history-grid" class="vocab-grid max-h-[70vh] overflow-y-auto p-4">
+                <div class="loader"></div>
+            </div>
+            <button id="close-history-btn" class="btn btn-secondary mt-6"><i class="fas fa-times mr-2"></i><span data-i18n="close">Close</span></button>
+        </div>
+    </div>
     
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
         import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-        import { getFirestore, doc, setDoc, getDoc, updateDoc, collection, getDocs, arrayUnion, writeBatch, increment } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+        import { getFirestore, doc, setDoc, getDoc, updateDoc, collection, getDocs, arrayUnion, writeBatch, increment, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
         
         // --- Firebase Config ---
         const firebaseConfig = {
@@ -851,24 +968,30 @@
                 addNewStage: "Add New Stage", edit: "Edit", delete: "Delete", activities: "Activities:", addActivity: "Add Activity", vocabulary: "Vocabulary",
                 backToStages: "Back to Stages", noActivities: "No activities in this stage yet.", noStages: "No stages yet. Start by adding one.", startStage: "Start Activities",
                 addNewStageTitle: "Add New Stage", editStageTitle: "Edit Stage Name", stageName: "Stage Name (Lesson)", save: "Save", cancel: "Cancel",
-                addNewActivityTitle: "Add New Activity", editVocabulary: "Edit Vocabulary", addWord: "Add Word",
+                addNewActivityTitle: "Add New Activity", editActivityTitle: "Edit Activity", editVocabulary: "Edit Vocabulary", addWord: "Add Word",
                 selectActivityType: "-- Select Activity Type --",
-                multipleChoice: "Multiple Choice", matching: "Matching", coloring: "Coloring (Image)", arrangeWords: "Arrange Words", completeSentence: "Complete Sentence", traceWord: "Trace Word", pronunciation: "Pronunciation", colorWord: "Color the Word",
+                multipleChoice: "Multiple Choice", matching: "Matching", arrangeWords: "Arrange Words", completeSentence: "Complete Sentence", traceWord: "Trace Word", pronunciation: "Pronunciation", colorWord: "Color the Word",
                 saveActivity: "Save Activity", confirmTitle: "Are You Sure?", yes: "Yes", no: "No",
                 excellent: "Excellent!", stageComplete: "Stage Complete! Amazing!", purchaseSuccess: "Purchase Successful!",
                 shop: "Shop", hint: "Hint", timeBoost: "Time Boost (+15s)", buy: "Buy", use: "Use",
                 correctSound: "Correct Answer", winSound: "Win Stage", wrongSound: "Wrong Answer", clickSound: "UI Click", timerUrgentSound: "Timer Urgent Tick", purchaseSound: "Purchase", coinSound: "Coin Collect", timesUpSound: "Time's Up",
                 backgroundMusic: "Background Music",
-                timeLimit: "Time Limit (seconds, 0 for none)", close: "Close", saveSounds: "Save Sound URLs", soundUrlPlaceholder: "Paste direct audio URL or Base64 data",
-                soundNote: "Note: Please use direct audio links or Base64 data URLs. You can convert audio files to Base64 using online tools.",
+                timeLimit: "Time Limit (seconds, 0 for none)", close: "Close", saveSounds: "Save Sound URLs", soundUrlPlaceholder: "Paste URL, or upload",
+                soundNote: "Note: Control sound volume below. You can paste direct links or upload files to GitHub (requires setup).",
                 audioSource: "Audio Source", textToSpeech: "Text-to-Speech", uploadedAudio: "Uploaded Audio", uploadAudio: "Upload Audio File",
-                coloringImage: "Upload Coloring Image (SVG only)", word: "Word", image: "Image", audio: "Audio",
+                word: "Word", image: "Image", audio: "Audio",
                 pronunciationStatus: "Click the mic and say the word!", pronunciationListening: "Listening...", pronunciationSuccess: "Perfect!", pronunciationFail: "Try again!",
                 pronunciationUnsupported: "Sorry, your browser doesn't support speech recognition.", pronunciationUnsupportedCTA: "I have said the word, Next!",
                 timesUp: "Time's Up!",
                 questionAudio: "Question Audio URL (optional)", useTTS: "Use Auto-Voice for Question",
                 startGame: "Start Game", gameInfo: "Game Info", gamePaused: "Game Paused", resume: "Resume",
-                gameInfoManagement: "Game Info Management", saveInfo: "Save Game Info"
+                gameInfoManagement: "Game Info Management", saveInfo: "Save Game Info",
+                upload: "Upload", history: "History", fileHistory: "File History", uploading: "Uploading...",
+                githubConfig: "GitHub Configuration", githubConfigNote: "These settings are required for the file upload feature and are saved locally in your browser.",
+                saveConfig: "Save Configuration", configSaved: "Configuration saved successfully!",
+                githubConfigWarning: "GitHub upload is not configured. Please fill in your details in the CMS.",
+                itemType: "Item Type", itemValue: "Text or Image URL",
+                prompt: "Prompt", answer: "Answer", text: "Text"
             },
             ar: {
                 loading: "جاري تحميل اللعبة...", welcome: "مغامرة تعلم اللغة الإنجليزية", email: "البريد الإلكتروني", password: "كلمة المرور", login: "دخول", createAccount: "إنشاء حساب جديد",
@@ -880,37 +1003,45 @@
                 addNewStage: "إضافة مرحلة جديدة", edit: "تعديل", delete: "حذف", activities: "الأنشطة:", addActivity: "إضافة نشاط", vocabulary: "المفردات",
                 backToStages: "العودة للمراحل", noActivities: "لا توجد أنشطة في هذه المرحلة بعد.", noStages: "لا توجد مراحل بعد. ابدأ بإضافة واحدة.", startStage: "ابدأ الأنشطة",
                 addNewStageTitle: "إضافة مرحلة جديدة", editStageTitle: "تعديل اسم المرحلة", stageName: "اسم المرحلة (الدرس)", save: "حفظ", cancel: "إلغاء",
-                addNewActivityTitle: "إضافة نشاط جديد", editVocabulary: "تعديل المفردات", addWord: "إضافة كلمة",
+                addNewActivityTitle: "إضافة نشاط جديد", editActivityTitle: "تعديل النشاط", editVocabulary: "تعديل المفردات", addWord: "إضافة كلمة",
                 selectActivityType: "-- اختر نوع النشاط --",
-                multipleChoice: "اختيار من متعدد", matching: "توصيل", coloring: "تلوين (صورة)", arrangeWords: "ترتيب الكلمات", completeSentence: "أكمل الجملة", traceWord: "الكتابة على النقط", pronunciation: "النطق", colorWord: "تلوين الكلمة",
+                multipleChoice: "اختيار من متعدد", matching: "توصيل", arrangeWords: "ترتيب الكلمات", completeSentence: "أكمل الجملة", traceWord: "الكتابة على النقط", pronunciation: "النطق", colorWord: "تلوين الكلمة",
                 saveActivity: "حفظ النشاط", confirmTitle: "هل أنت متأكد؟", yes: "نعم", no: "لا",
                 excellent: "أحسنتِ!", stageComplete: "اكتملت المرحلة! رائعة!", purchaseSuccess: "تم الشراء بنجاح!",
                 shop: "المتجر", hint: "تلميح", timeBoost: "زيادة الوقت (+15 ث)", buy: "شراء", use: "استخدام",
                 correctSound: "صوت الإجابة الصحيحة", winSound: "صوت الفوز بالمرحلة", wrongSound: "صوت الإجابة الخاطئة", clickSound: "صوت النقر", timerUrgentSound: "صوت المؤقت الحرج", purchaseSound: "صوت الشراء", coinSound: "صوت النقود", timesUpSound: "صوت انتهاء الوقت",
                 backgroundMusic: "الموسيقى التصويرية",
-                timeLimit: "الوقت المحدد (بالثواني، 0 يعني بدون مؤقت)", close: "إغلاق", saveSounds: "حفظ روابط الأصوات", soundUrlPlaceholder: "الصق رابط الصوت المباشر أو بيانات Base64",
-                soundNote: "ملاحظة: الرجاء استخدام روابط صوت مباشرة أو بيانات Base64. يمكنك تحويل ملفات الصوت إلى Base64 باستخدام أدوات على الإنترنت.",
+                timeLimit: "الوقت المحدد (بالثواني، 0 يعني بدون مؤقت)", close: "إغلاق", saveSounds: "حفظ روابط الأصوات", soundUrlPlaceholder: "الصق الرابط، أو ارفع ملف",
+                soundNote: "ملاحظة: تحكم في مستوى الصوت بالأسفل. يمكنك لصق روابط مباشرة أو رفع ملفات إلى جيت هاب (يتطلب إعداد).",
                 audioSource: "مصدر الصوت", textToSpeech: "النطق التلقائي", uploadedAudio: "ملف صوتي مرفوع", uploadAudio: "رفع ملف صوتي",
-                coloringImage: "رفع صورة التلوين (SVG فقط)", word: "الكلمة", image: "الصورة", audio: "الصوت",
+                word: "الكلمة", image: "الصورة", audio: "الصوت",
                 pronunciationStatus: "اضغطي على المايك وقولي الكلمة!", pronunciationListening: "يتم الاستماع...", pronunciationSuccess: "ممتاز!", pronunciationFail: "حاولي مرة أخرى!",
                 pronunciationUnsupported: "عذراً، متصفحك لا يدعم ميزة التعرف على الصوت.", pronunciationUnsupportedCTA: "لقد نطقت الكلمة، التالي!",
                 timesUp: "انتهى الوقت!",
                 questionAudio: "رابط صوت السؤال (اختياري)", useTTS: "استخدام الصوت التلقائي للسؤال",
                 startGame: "ابدأ اللعبة", gameInfo: "معلومات اللعبة", gamePaused: "اللعبة متوقفة مؤقتاً", resume: "استئناف",
-                gameInfoManagement: "إدارة معلومات اللعبة", saveInfo: "حفظ معلومات اللعبة"
+                gameInfoManagement: "إدارة معلومات اللعبة", saveInfo: "حفظ معلومات اللعبة",
+                upload: "رفع", history: "السجل", fileHistory: "سجل الملفات", uploading: "جاري الرفع...",
+                githubConfig: "إعدادات GitHub", githubConfigNote: "هذه الإعدادات مطلوبة لميزة رفع الملفات ويتم حفظها محلياً في متصفحك فقط.",
+                saveConfig: "حفظ الإعدادات", configSaved: "تم حفظ الإعدادات بنجاح!",
+                githubConfigWarning: "إعدادات رفع الملفات عبر جيت هاب غير مكتملة. الرجاء تعبئة بياناتك في لوحة التحكم.",
+                itemType: "نوع العنصر", itemValue: "نص أو رابط صورة",
+                prompt: "السؤال", answer: "الجواب", text: "نص"
             }
         };
         
         // --- Global State ---
         let currentLanguage = localStorage.getItem('language') || 'en';
-        let soundEnabled = true;
+        let isMusicMuted = localStorage.getItem('isMusicMuted') === 'true';
         let gameSounds = {};
         let currentUser = null;
         let currentUserData = null;
         let currentStageObject = null, currentActivityIndex = 0, currentActivity = null, activityTimer = null, timeLeft = 0;
-        let currentCmsGrade = 'first', curriculumData = {}, editingStageIndex = null, currentStageIndexForActivity = null;
+        let currentCmsGrade = 'first', curriculumData = {}, editingStageIndex = null, editingActivityIndex = null, currentStageIndexForActivity = null;
         let isGamePaused = false;
         let gameHasStarted = false;
+        let activeUrlInput = null;
+        let gameInfoData = null;
         
         // --- Core Functions (UI, Sound, Utils) ---
         function getTranslation(key) { 
@@ -925,6 +1056,19 @@
             localStorage.setItem('language', currentLanguage);
         }
         
+        async function loadGameData() {
+            await loadGameSounds();
+            try {
+                const infoDocRef = doc(db, "settings", "gameInfo");
+                const infoDocSnap = await getDoc(infoDocRef);
+                if (infoDocSnap.exists()) {
+                    gameInfoData = infoDocSnap.data();
+                }
+            } catch (error) {
+                console.error("Error pre-loading game info:", error);
+            }
+        }
+
         async function loadGameSounds() {
             try {
                 const soundDocRef = doc(db, "settings", "sounds");
@@ -934,12 +1078,15 @@
                     gameSounds = {};
                     const bgm = document.getElementById('background-music');
                     for (const key in soundData) {
-                        if (soundData[key]) {
+                        const soundInfo = soundData[key];
+                        if (soundInfo && soundInfo.url) {
                            if (key === 'backgroundMusic') {
-                               bgm.src = soundData[key];
+                               bgm.src = soundInfo.url;
+                               bgm.volume = soundInfo.volume || 0.2; // --- التعديل: تم تغيير مستوى الصوت الافتراضي إلى 0.2
                            } else {
-                               gameSounds[key] = new Audio(soundData[key]);
+                               gameSounds[key] = new Audio(soundInfo.url);
                                gameSounds[key].preload = 'auto';
+                               gameSounds[key].volume = soundInfo.volume || 1;
                            }
                         }
                     }
@@ -950,21 +1097,41 @@
         }
         
         function playSound(type) {
-            if (!soundEnabled || !gameSounds[type]) return;
+            if (!gameSounds[type]) return;
             const sound = gameSounds[type];
             sound.currentTime = 0;
             sound.play().catch(e => console.warn("Sound play failed for:", type, e));
+        }
+
+        function toggleMusic() {
+            isMusicMuted = !isMusicMuted;
+            localStorage.setItem('isMusicMuted', isMusicMuted);
+            updateMusicButtonState();
+            const bgm = document.getElementById('background-music');
+            
+            if (isMusicMuted) {
+                bgm.pause();
+            } else {
+                bgm.play().catch(e => console.log("BGM play needs user interaction first."));
+            }
         }
         
         function showPage(pageId) {
             document.querySelectorAll('.page').forEach(page => page.classList.toggle('hidden', page.id !== pageId));
         }
         
-        function setLoadingState(button, isLoading) {
+        function setLoadingState(button, isLoading, textKey = null) {
             const text = button.querySelector('.btn-text');
             const loader = button.querySelector('.btn-loader');
             button.disabled = isLoading;
-            if (text) text.classList.toggle('hidden', isLoading);
+            if (text) {
+                if(isLoading && textKey) {
+                    text.textContent = getTranslation(textKey);
+                } else if (!isLoading && button.dataset.originalText) {
+                    text.textContent = button.dataset.originalText;
+                }
+                text.classList.toggle('hidden', isLoading);
+            }
             if (loader) loader.classList.toggle('hidden', !isLoading);
         }
         
@@ -1123,13 +1290,13 @@
                 : (currentLanguage === 'ar' ? `!حاولي مرة أخرى يا ${name}` : `Keep trying, ${name}!`);
             
             const icon = isCorrect
-                ? '<i class="fas fa-star text-yellow-400 text-5xl animate-ping opacity-75 absolute"></i><i class="fas fa-star text-yellow-400 text-6xl relative"></i>'
-                : '<i class="fas fa-hand-holding-heart text-pink-400 text-6xl"></i>';
+                ? '<i class="fas fa-star text-yellow-400 text-7xl animate-ping opacity-75 absolute"></i><i class="fas fa-star text-yellow-400 text-8xl relative"></i>'
+                : '<i class="fas fa-hand-holding-heart text-pink-400 text-8xl"></i>';
 
-            let cardBorder = isCorrect ? 'border-green-400' : 'border-red-400';
-            let messageColor = isCorrect ? 'text-green-600' : 'text-red-600';
+            card.style.borderImageSource = isCorrect 
+                ? 'linear-gradient(to right, var(--success-color), var(--secondary-color))' 
+                : 'linear-gradient(to right, var(--danger-color), var(--warning-color))';
 
-            card.style.borderColor = isCorrect ? 'var(--success-color)' : 'var(--danger-color)';
             iconContainer.innerHTML = icon;
             messageEl.textContent = message;
             messageEl.style.color = isCorrect ? 'var(--success-color)' : 'var(--danger-color)';
@@ -1137,6 +1304,7 @@
             modal.classList.remove('hidden');
 
             if (isCorrect) {
+                createParticleEffect(window.innerWidth / 2, window.innerHeight * 0.4, 'var(--success-color)');
                 setTimeout(() => triggerCoinCollectionEffect(card), 500);
             }
             
@@ -1169,7 +1337,7 @@
             return new Promise((resolve, reject) => {
                 const reader = new FileReader();
                 reader.readAsDataURL(file);
-                reader.onload = () => resolve(reader.result);
+                reader.onload = () => resolve(reader.result.split(',')[1]);
                 reader.onerror = error => reject(error);
             });
         }
@@ -1186,7 +1354,7 @@
                 const userDocSnap = await getDoc(userDocRef);
                 if (userDocSnap.exists()) {
                     currentUserData = { id: user.uid, ...userDocSnap.data() };
-                } else { // First time student login
+                } else {
                     await setDoc(userDocRef, { 
                         username: user.displayName || 'New Student', email: user.email, role: 'student', 
                         grade: null, progress: {}, coins: 0, inventory: {} 
@@ -1228,32 +1396,37 @@
         
         // --- Event Listeners Setup ---
         function setupEventListeners() {
-            // Language & Sound Toggles
             document.getElementById('lang-toggle').addEventListener('click', () => { 
                 playSound('clickSound'); 
                 currentLanguage = (currentLanguage === 'en') ? 'ar' : 'en'; 
                 updateLanguage(); 
             });
             
-            document.getElementById('sound-toggle').addEventListener('click', () => {
-                soundEnabled = !soundEnabled;
-                const toggle = document.getElementById('sound-toggle');
-                toggle.classList.toggle('muted', !soundEnabled);
-                toggle.querySelector('i').className = soundEnabled ? 'fas fa-volume-up' : 'fas fa-volume-mute';
-                const bgm = document.getElementById('background-music');
-                if (soundEnabled) {
-                    bgm.play().catch(e => console.log("BGM play needs user interaction first."));
-                } else {
-                    bgm.pause();
-                }
-            });
+            document.getElementById('sound-toggle').addEventListener('click', toggleMusic);
 
-            // Start Page
             document.getElementById('start-game-btn').addEventListener('click', () => {
-                playSound('clickSound');
                 gameHasStarted = true;
                 const bgm = document.getElementById('background-music');
-                if(soundEnabled) bgm.play().catch(e => console.error("BGM failed to play:", e));
+                
+                if (!isMusicMuted) {
+                    const playPromise = bgm.play();
+                    if (playPromise !== undefined) {
+                        playPromise.catch(error => {
+                            console.log("Autoplay was prevented. User must interact with sound toggle.");
+                            isMusicMuted = true;
+                            updateMusicButtonState();
+                        });
+                    }
+                }
+                
+                // --- التعديل: تم حذف هذا الجزء الذي يقوم بتشغيل كل الأصوات ---
+                /*
+                Object.values(gameSounds).forEach(sound => {
+                    sound.play().then(() => { sound.pause(); sound.currentTime = 0; });
+                });
+                */
+
+                playSound('clickSound');
 
                 if (currentUser) {
                     navigateToUserPage();
@@ -1267,11 +1440,10 @@
                 document.getElementById('info-modal').classList.add('hidden');
             });
 
-            // Pause Modal
+            document.getElementById('pause-game-btn').addEventListener('click', pauseGame);
             document.getElementById('resume-game-btn').addEventListener('click', resumeGame);
             document.addEventListener('visibilitychange', handleVisibilityChange);
             
-            // Auth Page Buttons
             document.getElementById('login-btn').addEventListener('click', handleLogin);
             document.getElementById('create-account-btn').addEventListener('click', handleRegistration);
             document.getElementById('register-btn').addEventListener('click', () => { 
@@ -1294,7 +1466,6 @@
                 });
             });
             
-            // Logout Buttons
             ['student-logout-btn', 'teacher-logout-btn', 'admin-logout-btn', 'main-logout-btn'].forEach(id => {
                 const btn = document.getElementById(id);
                 if (btn) btn.addEventListener('click', () => { 
@@ -1305,7 +1476,6 @@
                 });
             });
             
-            // Navigation Buttons
             document.getElementById('teacher-play-game-btn').addEventListener('click', () => { 
                 playSound('clickSound'); 
                 currentUserData.grade = null; 
@@ -1329,13 +1499,12 @@
                 showPage('student-stages-page'); 
             });
             
-            // Grade Selection
             document.querySelectorAll('.grade-btn').forEach(btn => btn.addEventListener('click', handleGradeSelection));
             
-            // Teacher Dashboard
             document.getElementById('reset-stats-btn').addEventListener('click', handleResetStats);
             
-            // Admin CMS
+            // CMS
+            document.getElementById('save-github-config-btn').addEventListener('click', saveGitHubConfig);
             document.getElementById('cms-grade-select').addEventListener('change', (e) => loadCmsForGrade(e.target.value));
             document.getElementById('save-sounds-btn').addEventListener('click', handleSaveSounds);
             document.getElementById('save-info-btn').addEventListener('click', handleSaveGameInfo);
@@ -1350,28 +1519,30 @@
             document.getElementById('cancel-vocab-btn').addEventListener('click', () => document.getElementById('vocab-modal').classList.add('hidden'));
             document.getElementById('add-vocab-word-btn').addEventListener('click', addVocabWordToEditor);
             
-            // Shop
             document.getElementById('shop-btn').addEventListener('click', openShop);
             document.getElementById('activity-shop-btn').addEventListener('click', openShop);
             document.getElementById('close-shop-btn').addEventListener('click', () => { 
                 playSound('clickSound'); 
                 document.getElementById('shop-modal').classList.add('hidden'); 
             });
+            document.getElementById('close-history-btn').addEventListener('click', () => {
+                document.getElementById('file-history-modal').classList.add('hidden');
+            });
         }
         
         // --- Handler Functions ---
         
-        // Pause and Resume Game
         function handleVisibilityChange() {
-            if (document.hidden) {
+            const pausablePages = ['student-stages-page', 'vocabulary-page', 'game-page'];
+            const currentPage = document.querySelector('.page:not(.hidden)');
+            
+            if (document.hidden && currentPage && pausablePages.includes(currentPage.id)) {
                 pauseGame();
             }
         }
         
         function pauseGame() {
-            const gamePageActive = !document.getElementById('game-page').classList.contains('hidden');
-            if (!gamePageActive || isGamePaused) return;
-
+            if (isGamePaused) return;
             isGamePaused = true;
             if (activityTimer) clearInterval(activityTimer);
             document.getElementById('background-music').pause();
@@ -1382,10 +1553,9 @@
             playSound('clickSound');
             isGamePaused = false;
             document.getElementById('pause-modal').classList.add('hidden');
-            if (soundEnabled) document.getElementById('background-music').play();
+            if (!isMusicMuted) document.getElementById('background-music').play();
 
-            // Resume activity timer
-            if (currentActivity && currentActivity.data.timeLimit > 0) {
+            if (!document.getElementById('game-page').classList.contains('hidden') && currentActivity && currentActivity.data.timeLimit > 0) {
                  activityTimer = setInterval(() => {
                     timeLeft--;
                     document.getElementById('timer-countdown').textContent = timeLeft;
@@ -1401,27 +1571,20 @@
             }
         }
 
-        // Info Modal
-        async function showInfoModal() {
+        function showInfoModal() {
             playSound('clickSound');
-            try {
-                const infoDocRef = doc(db, "settings", "gameInfo");
-                const infoDocSnap = await getDoc(infoDocRef);
-                let infoText = "Welcome to our game!";
-                if (infoDocSnap.exists()) {
-                    const data = infoDocSnap.data();
-                    infoText = (currentLanguage === 'ar' ? data.infoText_ar : data.infoText_en) || data.infoText_en || "Info not available.";
-                }
-                document.getElementById('info-modal-text').textContent = infoText;
-                document.getElementById('info-modal').classList.remove('hidden');
-            } catch (error) {
-                console.error("Error loading game info:", error);
-                document.getElementById('info-modal-text').textContent = "Could not load information.";
-                document.getElementById('info-modal').classList.remove('hidden');
+            const modal = document.getElementById('info-modal');
+            const infoTextEl = document.getElementById('info-modal-text');
+
+            if (gameInfoData) {
+                const infoText = (currentLanguage === 'ar' ? gameInfoData.infoText_ar : gameInfoData.infoText_en) || gameInfoData.infoText_en || "Info not available.";
+                infoTextEl.textContent = infoText;
+            } else {
+                infoTextEl.textContent = getTranslation('loading');
             }
+            modal.classList.remove('hidden');
         }
         
-        // Auth Handlers
         function handleLogin() {
             playSound('clickSound');
             const email = document.getElementById('email').value;
@@ -1429,6 +1592,7 @@
             const errorMsg = document.getElementById('login-error');
             const loginBtn = document.getElementById('login-btn');
             errorMsg.classList.add('hidden');
+            if(!loginBtn.dataset.originalText) loginBtn.dataset.originalText = loginBtn.querySelector('.btn-text').textContent;
             setLoadingState(loginBtn, true);
             signInWithEmailAndPassword(auth, email, password)
                 .catch(error => {
@@ -1453,6 +1617,7 @@
                 playSound('wrongSound');
                 return;
             }
+            if(!createBtn.dataset.originalText) createBtn.dataset.originalText = createBtn.querySelector('.btn-text').textContent;
             setLoadingState(createBtn, true);
             createUserWithEmailAndPassword(auth, email, password)
                 .then(async (userCredential) => {
@@ -1484,7 +1649,6 @@
             }
         }
         
-        // Teacher Dashboard Handlers
         async function loadTeacherStats() {
             const statsContainer = document.getElementById('stats-container');
             statsContainer.innerHTML = '<div class="loader"></div>';
@@ -1547,6 +1711,7 @@
         
         // --- CMS Functions ---
         async function loadCmsData() {
+            loadGitHubConfig();
             loadCmsForGrade('first');
             loadSoundUrlManager();
             loadGameInfo();
@@ -1594,7 +1759,10 @@
                                 ${(stage.activities && stage.activities.length > 0) ? stage.activities.map((act, actIndex) => `
                                 <div class="flex justify-between items-center py-2 border-b draggable" draggable="true" data-activity-index="${actIndex}">
                                     <span><i class="fas fa-grip-vertical mr-2 text-gray-400"></i>${actIndex + 1}- ${getTranslation(act.type)}</span>
-                                    <button class="delete-activity-btn text-red-500 hover:text-red-700" data-stage-index="${index}" data-activity-index="${actIndex}"><i class="fas fa-times"></i></button>
+                                    <div>
+                                      <button class="edit-activity-btn text-blue-500 hover:text-blue-700 p-2" data-stage-index="${index}" data-activity-index="${actIndex}"><i class="fas fa-edit"></i></button>
+                                      <button class="delete-activity-btn text-red-500 hover:text-red-700 p-2" data-stage-index="${index}" data-activity-index="${actIndex}"><i class="fas fa-times"></i></button>
+                                    </div>
                                 </div>`).join('') : `<p class="text-gray-500 italic">${getTranslation('noActivities')}</p>`}
                             </div>
                             <button class="add-activity-btn btn btn-primary mt-3 w-full" data-stage-index="${index}"><i class="fas fa-plus mr-2"></i>${getTranslation('addActivity')}</button>
@@ -1605,17 +1773,16 @@
                  stagesList.innerHTML = `<p class="text-center text-gray-500">${getTranslation('noStages')}</p>`;
             }
             
-            // Re-attach listeners
             document.getElementById('add-stage-btn').addEventListener('click', () => openStageModal(null));
             document.querySelectorAll('.edit-stage-btn').forEach(btn => btn.addEventListener('click', (e) => openStageModal(parseInt(e.currentTarget.dataset.index))));
             document.querySelectorAll('.delete-stage-btn').forEach(btn => btn.addEventListener('click', (e) => deleteStage(parseInt(e.currentTarget.dataset.index))));
             document.querySelectorAll('.add-activity-btn').forEach(btn => btn.addEventListener('click', (e) => openActivityModal(parseInt(e.currentTarget.dataset.stageIndex))));
+            document.querySelectorAll('.edit-activity-btn').forEach(btn => btn.addEventListener('click', (e) => openActivityModalForEdit(parseInt(e.currentTarget.dataset.stageIndex), parseInt(e.currentTarget.dataset.activityIndex))));
             document.querySelectorAll('.delete-activity-btn').forEach(btn => btn.addEventListener('click', (e) => deleteActivity(parseInt(e.currentTarget.dataset.stageIndex), parseInt(e.currentTarget.dataset.activityIndex))));
             document.querySelectorAll('.edit-vocab-btn').forEach(btn => btn.addEventListener('click', (e) => openVocabModal(parseInt(e.currentTarget.dataset.stageIndex))));
             setupDragAndDrop();
         }
         
-        // --- Drag and Drop for CMS Activities ---
         function setupDragAndDrop() {
             const lists = document.querySelectorAll('.activity-list');
             let draggedItem = null;
@@ -1658,7 +1825,7 @@
                     curriculumData.stages[stageIndex].activities = newOrder;
                     
                     await updateCurriculumInDb();
-                    renderCmsEditor(); // Re-render to fix indices and order
+                    renderCmsEditor();
                 });
             });
 
@@ -1714,17 +1881,81 @@
         // Activity CMS
         function openActivityModal(stageIndex) {
             playSound('clickSound');
+            editingActivityIndex = null;
             currentStageIndexForActivity = stageIndex;
+            document.getElementById('activity-modal-title').textContent = getTranslation('addNewActivityTitle');
             document.getElementById('activity-type-select').value = '';
             document.getElementById('activity-form-container').innerHTML = '';
             document.getElementById('activity-modal').classList.remove('hidden');
         }
         
+        function openActivityModalForEdit(stageIndex, activityIndex) {
+            playSound('clickSound');
+            editingStageIndex = stageIndex;
+            editingActivityIndex = activityIndex;
+
+            const activity = curriculumData.stages[stageIndex].activities[activityIndex];
+            if (!activity) return;
+
+            document.getElementById('activity-modal-title').textContent = getTranslation('editActivityTitle');
+            const typeSelect = document.getElementById('activity-type-select');
+            typeSelect.value = activity.type;
+            
+            typeSelect.dispatchEvent(new Event('change'));
+            
+            const form = document.getElementById('activity-form-container');
+            form.querySelector('#activity-time-limit').value = activity.data.timeLimit || 0;
+            form.querySelector('#activity-question-text').value = activity.data.question || '';
+            form.querySelector('#activity-question-audio').value = activity.data.questionAudioUrl || '';
+            form.querySelector('#activity-question-tts').checked = activity.data.useTTS || false;
+
+            switch(activity.type) {
+                case 'color_word':
+                    form.querySelector('#cw-word').value = activity.data.word || '';
+                    break;
+                case 'multiple_choice':
+                    form.querySelector('#mc-image-url').value = activity.data.imageUrl || '';
+                    const optionsContainer = form.querySelector('#mc-options-container');
+                    optionsContainer.innerHTML = '';
+                    let correctOptionIndex = -1;
+                    activity.data.options.forEach((opt, index) => {
+                        if (opt.value === activity.data.correctAnswer.value && opt.type === activity.data.correctAnswer.type) {
+                           correctOptionIndex = index;
+                        }
+                        addMcOption(opt, index, correctOptionIndex === index);
+                    });
+                    break;
+                case 'pronunciation':
+                    form.querySelector('#pronounce-word').value = activity.data.word || '';
+                    form.querySelector('#pronounce-image-url').value = activity.data.imageUrl || '';
+                    form.querySelector('#pronounce-audio-url').value = activity.data.audioUrl || '';
+                    break;
+                case 'complete_sentence':
+                    form.querySelector('#cs-part1').value = activity.data.part1 || '';
+                    form.querySelector('#cs-correct').value = activity.data.correctWord || '';
+                    form.querySelector('#cs-part2').value = activity.data.part2 || '';
+                    form.querySelector('#cs-distractors').value = (activity.data.distractors || []).join(', ');
+                    break;
+                case 'matching':
+                    const pairsContainer = form.querySelector('#matching-pairs-container');
+                    pairsContainer.innerHTML = '';
+                    activity.data.pairs.forEach(pair => addMatchingPair(pair));
+                    break;
+                case 'arrange_words':
+                    form.querySelector('#arrange-text').value = activity.data.text || '';
+                    break;
+                case 'trace_word':
+                    form.querySelector('#trace-text').value = activity.data.text || '';
+                    break;
+            }
+
+            document.getElementById('activity-modal').classList.remove('hidden');
+        }
+
         async function renderActivity(activity) {
             currentActivity = activity;
             const container = document.getElementById('activity-container');
             container.innerHTML = '<div class="loader"></div>';
-            // Add a small delay to allow the loader to show, then fade in the new content
             setTimeout(() => {
                 container.style.opacity = 0;
                 
@@ -1761,9 +1992,10 @@
 
                 const playQuestionSound = () => {
                     if(data.questionAudioUrl) {
-                        new Audio(data.questionAudioUrl).play();
+                        const audio = new Audio(data.questionAudioUrl);
+                        audio.volume = gameSounds.correctSound ? gameSounds.correctSound.volume : 1;
+                        audio.play();
                     } else if(data.useTTS && questionText) {
-                        // Cancel any previous speech
                         window.speechSynthesis.cancel();
                         const utterance = new SpeechSynthesisUtterance(questionText);
                         utterance.lang = (currentLanguage === 'ar') ? 'ar-SA' : 'en-US';
@@ -1785,7 +2017,6 @@
                             <button id="activity-done-btn" class="btn btn-primary mt-4">Done</button>`;
                         container.innerHTML = html;
                         
-                        // --- FIX FOR COLOR WORD ACTIVITY ---
                         const drawingCanvas = container.querySelector('#drawing-canvas');
                         if (!drawingCanvas) { console.error("Color Word canvas not found!"); return; }
 
@@ -1798,13 +2029,12 @@
                         
                         const fontSize = Math.min(parentHeight * 0.7, parentWidth / (data.word.length * 0.6));
                         
-                        // Step 1: Draw the word in a light gray. This creates the "mask" for drawing.
                         drawCtx.clearRect(0, 0, parentWidth, parentHeight);
-                        drawCtx.globalCompositeOperation = 'source-over'; // Default mode
+                        drawCtx.globalCompositeOperation = 'source-over'; 
                         drawCtx.font = `bold ${fontSize}px 'Fredoka', sans-serif`;
                         drawCtx.textAlign = 'center';
                         drawCtx.textBaseline = 'middle';
-                        drawCtx.fillStyle = '#e0e0e0'; // Use a visible-but-light color
+                        drawCtx.fillStyle = '#e0e0e0'; 
                         drawCtx.fillText(data.word, parentWidth / 2, parentHeight / 2);
                         
                         let selectedColor = '#f44336';
@@ -1832,8 +2062,6 @@
                         function startDrawing(e) {
                             e.preventDefault();
                             isDrawing = true;
-                            // Step 2: Set composite operation to 'source-atop'
-                            // This makes drawing only happen ON TOP of existing pixels (the gray word).
                             drawCtx.globalCompositeOperation = 'source-atop';
                             drawCtx.strokeStyle = selectedColor;
                             drawCtx.lineWidth = 25;
@@ -1876,7 +2104,7 @@
                                         return `<button class="option-btn btn btn-primary p-2 h-40" data-index="${index}">
                                                     <img src="${option.value}" class="w-full h-full object-contain">
                                                 </button>`;
-                                    } else { // text
+                                    } else {
                                         return `<button class="option-btn btn btn-primary text-xl p-4" data-index="${index}">${option.value}</button>`;
                                     }
                                 }).join('')}
@@ -1894,50 +2122,6 @@
                             });
                         });
                         break;
-                        
-                    case 'coloring':
-                        questionText = data.question || "Color the picture";
-                        fetch(data.svgUrl)
-                            .then(response => {
-                                if (!response.ok) throw new Error('Network response was not ok');
-                                return response.text();
-                            })
-                            .then(svgText => {
-                                html = `<h2 class="activity-title">${questionText} ${questionAudioHtml}</h2>
-                                    <div class="coloring-canvas">${svgText}</div>
-                                    <div id="color-palette" class="color-palette">
-                                        ${['#f44336', '#9c27b0', '#2196f3', '#4caf50', '#ffeb3b', '#ff9800', '#795548', '#000000', '#ffffff'].map(c => `<div class="color-tool" data-color="${c}" style="background-color: ${c};"></div>`).join('')}
-                                    </div>
-                                    <button id="activity-done-btn" class="btn btn-primary mt-4">Done</button>`;
-                                container.innerHTML = html;
-                                let selectedColorFill = '#f44336';
-                                container.querySelectorAll('.color-tool').forEach(tool => {
-                                    tool.onclick = () => {
-                                        playSound('clickSound');
-                                        container.querySelector('.selected')?.classList.remove('selected');
-                                        tool.classList.add('selected');
-                                        selectedColorFill = tool.dataset.color;
-                                    }
-                                });
-                                container.querySelector('.color-tool').classList.add('selected');
-                                container.querySelectorAll('.coloring-canvas svg path').forEach(path => {
-                                    path.onclick = function(e) {
-                                        this.style.fill = selectedColorFill;
-                                        createParticleEffect(e.clientX, e.clientY, selectedColorFill);
-                                    };
-                                });
-                                container.querySelector('#activity-done-btn').addEventListener('click', handleCorrectAnswer);
-                                if (data.questionAudioUrl || data.useTTS) {
-                                     container.querySelector('.question-audio-btn')?.addEventListener('click', playQuestionSound);
-                                     if(data.useTTS) { setTimeout(playQuestionSound, 500); }
-                                }
-                            })
-                            .catch(error => {
-                                console.error('Failed to fetch SVG:', error);
-                                container.innerHTML = `<p class="text-red-500">Could not load the coloring image. Please check the URL.</p>`;
-                            });
-                        // Since fetch is async, we break here and let the `.then` handle the rendering
-                        return; // IMPORTANT: Exit the switch
                         
                     case 'pronunciation':
                         const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -2009,57 +2193,75 @@
                         
                     case 'matching':
                         questionText = data.question || "Match the items:";
-                        html = `<h2 class="activity-title">${questionText} ${questionAudioHtml}</h2>
-                            <div class="match-container grid grid-cols-2 gap-4">
-                                <div class="match-prompts flex flex-col gap-3"></div>
-                                <div class="match-answers flex flex-col gap-3"></div>
+                        html = `
+                            <h2 class="activity-title">${questionText} ${questionAudioHtml}</h2>
+                            <div class="match-container-wrapper">
+                                <svg class="connector-svg"></svg>
+                                <div class="match-container">
+                                    <div class="match-column" id="match-prompts"></div>
+                                    <div class="match-column" id="match-answers"></div>
+                                </div>
                             </div>`;
                         container.innerHTML = html;
-                        let selectedPrompt = null;
-                        let matchedCount = 0;
-                        const pairs = [...data.pairs].map((p, i) => ({ ...p, id: i }));
-                        const promptsContainer = container.querySelector('.match-prompts');
-                        const answersContainer = container.querySelector('.match-answers');
-                        
-                        pairs.forEach(p => {
-                            promptsContainer.innerHTML += `<div class="match-item p-4 rounded-xl shadow-md cursor-pointer bg-purple-100 hover:bg-purple-200 transition-colors" data-id="${p.id}">${p.prompt}</div>`;
-                        });
 
-                        [...pairs].sort(() => Math.random() - 0.5).forEach(p => {
-                            answersContainer.innerHTML += `<div class="match-item p-4 rounded-xl shadow-md cursor-pointer bg-teal-100 hover:bg-teal-200 transition-colors" data-id="${p.id}">${p.answer}</div>`;
-                        });
+                        const promptsContainer = container.querySelector('#match-prompts');
+                        const answersContainer = container.querySelector('#match-answers');
+                        const svgContainer = container.querySelector('.connector-svg');
+                        const pairs = [...data.pairs].map((p, i) => ({ ...p, id: i }));
+
+                        const renderMatchItem = item => item.type === 'image' ? `<img src="${item.value}" alt="match item">` : `<span>${item.value}</span>`;
                         
-                        container.querySelectorAll('.match-item').forEach(item => {
-                            item.addEventListener('click', (e) => handleMatchClick(e.target));
-                        });
+                        pairs.forEach(p => promptsContainer.innerHTML += `<div class="match-item" data-id="${p.id}">${renderMatchItem(p.prompt)}</div>`);
+                        [...pairs].sort(() => Math.random() - 0.5).forEach(p => answersContainer.innerHTML += `<div class="match-item" data-id="${p.id}">${renderMatchItem(p.answer)}</div>`);
+                        
+                        let selectedPromptEl = null;
+                        let matchedCount = 0;
+
+                        const allItems = container.querySelectorAll('.match-item');
+                        allItems.forEach(item => item.addEventListener('click', (e) => handleMatchClick(e.currentTarget)));
 
                         function handleMatchClick(item) {
                             if (item.classList.contains('matched')) return;
-                            
-                            const isPrompt = item.parentElement.classList.contains('match-prompts');
+
+                            const isPrompt = item.parentElement.id === 'match-prompts';
                             if (isPrompt) {
-                                container.querySelector('.match-prompts .bg-yellow-300')?.classList.replace('bg-yellow-300', 'bg-purple-100');
-                                item.classList.replace('bg-purple-100', 'bg-yellow-300');
-                                selectedPrompt = item;
-                            } else {
-                                if (!selectedPrompt) return;
-                                if (selectedPrompt.dataset.id === item.dataset.id) {
-                                    item.classList.add('matched', 'bg-green-300');
-                                    selectedPrompt.classList.add('matched', 'bg-green-300');
-                                    item.classList.remove('cursor-pointer', 'hover:bg-teal-200');
-                                    selectedPrompt.classList.remove('cursor-pointer', 'hover:bg-purple-200', 'bg-yellow-300');
-                                    createParticleEffect(item.getBoundingClientRect().left, item.getBoundingClientRect().top, 'var(--success-color)');
-                                    selectedPrompt = null;
+                                if (selectedPromptEl) selectedPromptEl.classList.remove('selected');
+                                selectedPromptEl = item;
+                                selectedPromptEl.classList.add('selected');
+                            } else if (selectedPromptEl) {
+                                if (selectedPromptEl.dataset.id === item.dataset.id) {
+                                    drawConnection(selectedPromptEl, item, true);
+                                    selectedPromptEl.classList.add('matched');
+                                    item.classList.add('matched');
+                                    selectedPromptEl.classList.remove('selected');
+                                    selectedPromptEl = null;
                                     matchedCount++;
                                     if (matchedCount === pairs.length) {
                                         setTimeout(handleCorrectAnswer, 1000);
                                     }
                                 } else {
-                                    handleWrongAnswer(item);
-                                    selectedPrompt.classList.replace('bg-yellow-300', 'bg-purple-100');
-                                    selectedPrompt = null;
+                                    drawConnection(selectedPromptEl, item, false);
+                                    handleWrongAnswer();
+                                    selectedPromptEl.classList.remove('selected');
+                                    selectedPromptEl = null;
                                 }
                             }
+                        }
+
+                        function drawConnection(el1, el2, isCorrect) {
+                            const rect1 = el1.getBoundingClientRect();
+                            const rect2 = el2.getBoundingClientRect();
+                            const containerRect = container.getBoundingClientRect();
+
+                            const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                            line.setAttribute('x1', rect1.right - containerRect.left);
+                            line.setAttribute('y1', rect1.top + rect1.height / 2 - containerRect.top);
+                            line.setAttribute('x2', rect2.left - containerRect.left);
+                            line.setAttribute('y2', rect2.top + rect2.height / 2 - containerRect.top);
+                            line.classList.add(isCorrect ? 'correct-line' : 'incorrect-line');
+                            
+                            svgContainer.appendChild(line);
+                            if (!isCorrect) setTimeout(() => line.remove(), 500);
                         }
                         break;
                     
@@ -2151,8 +2353,7 @@
                                 handleCorrectAnswer();
                             } else {
                                 handleWrongAnswer(dropZone);
-                                // --- CHANGE: Reset words on wrong answer ---
-                                setTimeout(resetWords, 600); // Reset after shake animation
+                                setTimeout(resetWords, 600);
                             }
                         };
                         break;
@@ -2161,9 +2362,12 @@
                         questionText = data.question || `Trace the word: ${data.text}`;
                         html = `
                             <h2 class="activity-title">${questionText} ${questionAudioHtml}</h2>
-                            <div class="canvas-container">
-                                <canvas id="trace-canvas-bg"></canvas>
-                                <canvas id="trace-canvas-draw" style="z-index: 2;"></canvas>
+                            <div class="trace-container">
+                                <svg viewBox="0 0 500 250">
+                                    <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" class="trace-text-outline">${data.text}</text>
+                                    <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" class="trace-text-guide">${data.text}</text>
+                                </svg>
+                                <canvas id="trace-canvas-draw"></canvas>
                             </div>
                             <div class="flex justify-center items-center gap-4 mt-4">
                                 <button id="clear-trace-btn" class="btn btn-secondary"><i class="fas fa-undo mr-2"></i>Clear</button>
@@ -2171,50 +2375,39 @@
                             </div>
                         `;
                         container.innerHTML = html;
-                        const bgCanvas = container.querySelector('#trace-canvas-bg');
-                        const drawCanvas = container.querySelector('#trace-canvas-draw');
-                        if(!bgCanvas || !drawCanvas) { console.error("Trace canvases not found!"); return; }
+                        const drawCanvasTrace = container.querySelector('#trace-canvas-draw');
+                        const drawCtxTrace = drawCanvasTrace.getContext('2d');
                         
-                        const drawCtxTrace = drawCanvas.getContext('2d');
-
-                        const bgCtx = bgCanvas.getContext('2d');
-                        const parentEl = container.querySelector('.canvas-container');
-                        bgCanvas.width = drawCanvas.width = parentEl.clientWidth;
-                        bgCanvas.height = drawCanvas.height = parentEl.clientHeight;
-
-                        const traceFontSize = Math.min(parentEl.clientHeight * 0.7, parentEl.clientWidth / (data.text.length * 0.6));
-                        bgCtx.font = `bold ${traceFontSize}px Fredoka`;
-                        bgCtx.fillStyle = '#e0e0e0';
-                        bgCtx.textAlign = 'center';
-                        bgCtx.textBaseline = 'middle';
-                        bgCtx.fillText(data.text, bgCanvas.width / 2, bgCanvas.height / 2);
+                        const parentElTrace = container.querySelector('.trace-container');
+                        drawCanvasTrace.width = parentElTrace.clientWidth;
+                        drawCanvasTrace.height = parentElTrace.clientHeight;
 
                         let isTracing = false;
                         drawCtxTrace.strokeStyle = 'var(--primary-color)';
-                        drawCtxTrace.lineWidth = 15;
+                        drawCtxTrace.lineWidth = 20;
                         drawCtxTrace.lineCap = 'round';
                         drawCtxTrace.lineJoin = 'round';
 
-                        function getTracePos(canvas, event) {
-                            const rect = canvas.getBoundingClientRect();
-                            const clientX = event.touches ? event.touches[0].clientX : event.clientX;
-                            const clientY = event.touches ? event.touches[0].clientY : event.clientY;
+                        const getTracePos = (e) => {
+                            const rect = drawCanvasTrace.getBoundingClientRect();
+                            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
                             return { x: clientX - rect.left, y: clientY - rect.top };
-                        }
+                        };
 
-                        const startTrace = (e) => { e.preventDefault(); isTracing = true; const pos = getTracePos(drawCanvas, e); drawCtxTrace.beginPath(); drawCtxTrace.moveTo(pos.x, pos.y); };
-                        const doTrace = (e) => { if (!isTracing) return; e.preventDefault(); const pos = getTracePos(drawCanvas, e); drawCtxTrace.lineTo(pos.x, pos.y); drawCtxTrace.stroke(); };
+                        const startTrace = (e) => { e.preventDefault(); isTracing = true; const pos = getTracePos(e); drawCtxTrace.beginPath(); drawCtxTrace.moveTo(pos.x, pos.y); };
+                        const doTrace = (e) => { if (!isTracing) return; e.preventDefault(); const pos = getTracePos(e); drawCtxTrace.lineTo(pos.x, pos.y); drawCtxTrace.stroke(); };
                         const stopTrace = () => isTracing = false;
 
-                        drawCanvas.addEventListener('mousedown', startTrace);
-                        drawCanvas.addEventListener('mousemove', doTrace);
-                        drawCanvas.addEventListener('mouseup', stopTrace);
-                        drawCanvas.addEventListener('mouseout', stopTrace);
-                        drawCanvas.addEventListener('touchstart', startTrace, { passive: false });
-                        drawCanvas.addEventListener('touchmove', doTrace, { passive: false });
-                        drawCanvas.addEventListener('touchend', stopTrace);
+                        drawCanvasTrace.addEventListener('mousedown', startTrace);
+                        drawCanvasTrace.addEventListener('mousemove', doTrace);
+                        drawCanvasTrace.addEventListener('mouseup', stopTrace);
+                        drawCanvasTrace.addEventListener('mouseout', stopTrace);
+                        drawCanvasTrace.addEventListener('touchstart', startTrace, { passive: false });
+                        drawCanvasTrace.addEventListener('touchmove', doTrace, { passive: false });
+                        drawCanvasTrace.addEventListener('touchend', stopTrace);
 
-                        container.querySelector('#clear-trace-btn').onclick = () => drawCtxTrace.clearRect(0, 0, drawCanvas.width, drawCanvas.height);
+                        container.querySelector('#clear-trace-btn').onclick = () => drawCtxTrace.clearRect(0, 0, drawCanvasTrace.width, drawCanvasTrace.height);
                         container.querySelector('#activity-done-btn').onclick = handleCorrectAnswer;
                         break;
                 }
@@ -2222,9 +2415,7 @@
                 if (data.questionAudioUrl || data.useTTS) {
                     const audioBtn = container.querySelector('.question-audio-btn');
                     if(audioBtn) audioBtn.addEventListener('click', playQuestionSound);
-                    if(data.useTTS) {
-                        setTimeout(playQuestionSound, 500);
-                    }
+                    setTimeout(playQuestionSound, 500);
                 }
                 renderInventory();
                 container.style.opacity = 1;
@@ -2238,6 +2429,7 @@
             const type = document.getElementById('activity-type-select').value;
             if (!type) return;
             const saveBtn = document.getElementById('save-activity-btn');
+            if(!saveBtn.dataset.originalText) saveBtn.dataset.originalText = saveBtn.querySelector('.btn-text').textContent;
             setLoadingState(saveBtn, true);
             
             try {
@@ -2271,10 +2463,6 @@
                         data.correctAnswer = data.options[correctIndex];
                         if (!data.correctAnswer || data.options.length < 2) throw new Error("Please provide at least two options and select a correct answer.");
                         break;
-                    case 'coloring':
-                        data.svgUrl = document.getElementById('coloring-svg-url').value.trim();
-                        if (!data.svgUrl) throw new Error("Please provide an SVG Image URL.");
-                        break;
                     case 'pronunciation':
                         data.word = document.getElementById('pronounce-word').value.trim();
                         data.imageUrl = document.getElementById('pronounce-image-url').value.trim();
@@ -2290,12 +2478,19 @@
                         break;
                     case 'matching':
                         data.pairs = [];
-                        const prompts = document.querySelectorAll('.match-prompt');
-                        prompts.forEach((p, i) => {
-                            const answer = document.querySelectorAll('.match-answer')[i].value;
-                            if (p.value.trim() && answer.trim()) data.pairs.push({ prompt: p.value.trim(), answer: answer.trim() });
+                        document.querySelectorAll('.matching-pair-item').forEach(pairEl => {
+                            const promptType = pairEl.querySelector('.match-prompt-type').value;
+                            const promptValue = pairEl.querySelector('.match-prompt-value').value.trim();
+                            const answerType = pairEl.querySelector('.match-answer-type').value;
+                            const answerValue = pairEl.querySelector('.match-answer-value').value.trim();
+                            if (promptValue && answerValue) {
+                                data.pairs.push({
+                                    prompt: { type: promptType, value: promptValue },
+                                    answer: { type: answerType, value: answerValue }
+                                });
+                            }
                         });
-                        if (data.pairs.length < 2) throw new Error("Please provide at least two complete pairs.");
+                        if (data.pairs.length < 1) throw new Error("Please provide at least one complete pair.");
                         break;
                     case 'arrange_words':
                         data.text = document.getElementById('arrange-text').value.trim();
@@ -2307,8 +2502,13 @@
                         break;
                 }
                 
-                curriculumData.stages[currentStageIndexForActivity].activities = curriculumData.stages[currentStageIndexForActivity].activities || [];
-                curriculumData.stages[currentStageIndexForActivity].activities.push({ type, data });
+                if (editingActivityIndex !== null) {
+                    curriculumData.stages[editingStageIndex].activities[editingActivityIndex] = { type, data };
+                } else {
+                    curriculumData.stages[currentStageIndexForActivity].activities = curriculumData.stages[currentStageIndexForActivity].activities || [];
+                    curriculumData.stages[currentStageIndexForActivity].activities.push({ type, data });
+                }
+
                 await updateCurriculumInDb();
                 document.getElementById('activity-modal').classList.add('hidden');
                 renderCmsEditor();
@@ -2345,13 +2545,22 @@
                         <input type="text" placeholder="${getTranslation('word')}" class="input-field mb-0 vocab-word" value="${word.word || ''}">
                         <button class="btn btn-danger btn-sm delete-vocab-btn"><i class="fas fa-trash"></i></button>
                     </div>
-                    <input type="text" placeholder="Image URL (e.g., https://.../image.png)" class="input-field mb-0 vocab-image-url" value="${word.imageUrl || ''}">
-                    <input type="text" placeholder="Audio URL (e.g., https://.../sound.mp3)" class="input-field mb-0 vocab-audio-url" value="${word.audioUrl || ''}">
+                     <div class="upload-container">
+                        <input type="text" placeholder="Image URL" class="input-field mb-0 vocab-image-url" value="${word.imageUrl || ''}">
+                        <button class="btn btn-primary upload-btn upload-btn-sm" data-type="image"><i class="fas fa-upload"></i></button>
+                        <button class="btn btn-secondary history-btn history-btn-sm" data-type="image"><i class="fas fa-history"></i></button>
+                    </div>
+                    <div class="upload-container">
+                        <input type="text" placeholder="Audio URL" class="input-field mb-0 vocab-audio-url" value="${word.audioUrl || ''}">
+                        <button class="btn btn-primary upload-btn upload-btn-sm" data-type="audio"><i class="fas fa-upload"></i></button>
+                        <button class="btn btn-secondary history-btn history-btn-sm" data-type="audio"><i class="fas fa-history"></i></button>
+                    </div>
                 </div>
             `).join('');
-            container.querySelectorAll('.delete-vocab-btn').forEach(btn => {
-                btn.onclick = (e) => e.currentTarget.closest('.p-3').remove();
-            });
+            
+            container.querySelectorAll('.delete-vocab-btn').forEach(btn => btn.onclick = (e) => e.currentTarget.closest('.p-3').remove());
+            container.querySelectorAll('.upload-btn').forEach(btn => btn.addEventListener('click', handleUploadClick));
+            container.querySelectorAll('.history-btn').forEach(btn => btn.addEventListener('click', handleHistoryClick));
         }
         
         function addVocabWordToEditor() {
@@ -2363,14 +2572,24 @@
                         <input type="text" placeholder="${getTranslation('word')}" class="input-field mb-0 vocab-word" value="">
                         <button class="btn btn-danger btn-sm delete-vocab-btn"><i class="fas fa-trash"></i></button>
                     </div>
-                    <input type="text" placeholder="Image URL (e.g., https://.../image.png)" class="input-field mb-0 vocab-image-url" value="">
-                    <input type="text" placeholder="Audio URL (e.g., https://.../sound.mp3)" class="input-field mb-0 vocab-audio-url" value="">
+                    <div class="upload-container">
+                        <input type="text" placeholder="Image URL" class="input-field mb-0 vocab-image-url">
+                        <button class="btn btn-primary upload-btn upload-btn-sm" data-type="image"><i class="fas fa-upload"></i></button>
+                        <button class="btn btn-secondary history-btn history-btn-sm" data-type="image"><i class="fas fa-history"></i></button>
+                    </div>
+                    <div class="upload-container">
+                        <input type="text" placeholder="Audio URL" class="input-field mb-0 vocab-audio-url">
+                        <button class="btn btn-primary upload-btn upload-btn-sm" data-type="audio"><i class="fas fa-upload"></i></button>
+                        <button class="btn btn-secondary history-btn history-btn-sm" data-type="audio"><i class="fas fa-history"></i></button>
+                    </div>
                 </div>`;
             
             container.insertAdjacentHTML('beforeend', newWordHtml);
             
             const newItem = container.lastElementChild;
             newItem.querySelector('.delete-vocab-btn').onclick = (e) => e.currentTarget.closest('.p-3').remove();
+            newItem.querySelectorAll('.upload-btn').forEach(btn => btn.addEventListener('click', handleUploadClick));
+            newItem.querySelectorAll('.history-btn').forEach(btn => btn.addEventListener('click', handleHistoryClick));
         }
         
         async function handleSaveVocabulary() {
@@ -2400,7 +2619,6 @@
             }
         }
         
-        // Sound and Info URL Manager
         async function loadSoundUrlManager() {
             const container = document.getElementById('sound-url-manager');
             const soundTypes = {
@@ -2415,47 +2633,57 @@
             container.innerHTML = Object.entries(soundTypes).map(([key, value]) => `
                 <div class="p-3 bg-gray-50 rounded-lg">
                     <div class="font-semibold mb-2"><i class="fas ${value.icon} text-purple-500 mr-2"></i><span>${getTranslation(value.label)}</span></div>
-                    <input type="text" id="${key}-url" class="input-field mb-0" placeholder="${getTranslation('soundUrlPlaceholder')}" value="${currentSounds[key] || ''}">
+                    <div class="upload-container">
+                        <input type="text" id="${key}-url" class="input-field mb-0 sound-url-input" placeholder="${getTranslation('soundUrlPlaceholder')}" value="${currentSounds[key]?.url || ''}">
+                        <button type="button" class="btn btn-primary upload-btn upload-btn-sm" data-type="audio"><i class="fas fa-upload"></i></button>
+                        <button type="button" class="btn btn-secondary history-btn history-btn-sm" data-type="audio"><i class="fas fa-history"></i></button>
+                    </div>
+                    <input type="range" id="${key}-volume" class="w-full mt-2" min="0" max="1" step="0.1" value="${currentSounds[key]?.volume !== undefined ? currentSounds[key].volume : 1}">
                 </div>`).join('');
+            
+            container.querySelectorAll('.upload-btn').forEach(btn => btn.addEventListener('click', handleUploadClick));
+            container.querySelectorAll('.history-btn').forEach(btn => btn.addEventListener('click', handleHistoryClick));
+
             updateLanguage();
         }
         
         async function handleSaveSounds() {
              playSound('clickSound');
-             const soundUrls = {};
-             document.querySelectorAll('#sound-url-manager input').forEach(input => {
-                 const key = input.id.replace('-url', '');
-                 if (input.value.trim()) soundUrls[key] = input.value.trim();
+             const soundData = {};
+             document.querySelectorAll('#sound-url-manager .p-3').forEach(div => {
+                 const urlInput = div.querySelector('input[type="text"]');
+                 const volumeInput = div.querySelector('input[type="range"]');
+                 const key = urlInput.id.replace('-url', '');
+                 if (urlInput.value.trim()) {
+                     soundData[key] = {
+                         url: urlInput.value.trim(),
+                         volume: parseFloat(volumeInput.value)
+                     };
+                 }
              });
              try {
-                await setDoc(doc(db, "settings", "sounds"), soundUrls, { merge: true });
+                await setDoc(doc(db, "settings", "sounds"), soundData, { merge: true });
                 await loadGameSounds();
                 showToast("Sound URLs saved successfully!");
              } catch (e) { showToast("Error saving URLs."); }
         }
 
         async function loadGameInfo() {
-            try {
-                const infoDocRef = doc(db, "settings", "gameInfo");
-                const infoDocSnap = await getDoc(infoDocRef);
-                if (infoDocSnap.exists()) {
-                    const data = infoDocSnap.data();
-                    document.getElementById('game-info-en').value = data.infoText_en || '';
-                    document.getElementById('game-info-ar').value = data.infoText_ar || '';
-                }
-            } catch (error) {
-                console.error("Error loading game info for CMS:", error);
+            if(gameInfoData) {
+                document.getElementById('game-info-en').value = gameInfoData.infoText_en || '';
+                document.getElementById('game-info-ar').value = gameInfoData.infoText_ar || '';
             }
         }
 
         async function handleSaveGameInfo() {
             playSound('clickSound');
-            const infoData = {
+            const newInfoData = {
                 infoText_en: document.getElementById('game-info-en').value,
                 infoText_ar: document.getElementById('game-info-ar').value
             };
             try {
-                await setDoc(doc(db, "settings", "gameInfo"), infoData, { merge: true });
+                await setDoc(doc(db, "settings", "gameInfo"), newInfoData, { merge: true });
+                gameInfoData = newInfoData;
                 showToast("Game info saved successfully!");
             } catch (error) {
                 console.error("Error saving game info:", error);
@@ -2574,7 +2802,7 @@
             
             setTimeout(() => {
                 updateCoinsDisplay();
-            }, 1000); // Delay coin update until after animation
+            }, 1000);
             
             setTimeout(() => {
                 currentActivityIndex++;
@@ -2583,7 +2811,7 @@
                 } else {
                     handleStageComplete();
                 }
-            }, 2800); // Increased delay to allow encouragement modal to be seen
+            }, 2800);
         }
         
         async function handleStageComplete() {
@@ -2639,8 +2867,12 @@
                 <hr class="my-4">
                 <input type="number" id="activity-time-limit" placeholder="${getTranslation('timeLimit')}" class="input-field">
                 <input type="text" id="activity-question-text" placeholder="Question Text (optional)" class="input-field">
-                <input type="text" id="activity-question-audio" placeholder="${getTranslation('questionAudio')}" class="input-field">
-                <div class="flex items-center gap-2 mb-4"><input type="checkbox" id="activity-question-tts"><label for="activity-question-tts">${getTranslation('useTTS')}</label></div>
+                <div class="upload-container">
+                    <input type="text" id="activity-question-audio" placeholder="${getTranslation('questionAudio')}" class="input-field mb-0">
+                    <button type="button" class="btn btn-primary upload-btn" data-type="audio"><i class="fas fa-upload"></i></button>
+                    <button type="button" class="btn btn-secondary history-btn" data-type="audio"><i class="fas fa-history"></i></button>
+                </div>
+                <div class="flex items-center gap-2 my-4"><input type="checkbox" id="activity-question-tts"><label for="activity-question-tts">${getTranslation('useTTS')}</label></div>
                 <hr class="my-4">
             `;
             let formHtml = '';
@@ -2651,33 +2883,26 @@
                     break;
                 case 'multiple_choice':
                     formHtml += `<p class="text-sm text-gray-500 my-2">For each option, fill in the Text OR the Image URL.</p>
-                        <input type="text" id="mc-image-url" placeholder="Optional: Main Question Image URL" class="input-field">
-                        <div id="mc-options-container" class="space-y-3">
-                            <div class="p-3 border rounded-lg bg-slate-50">
-                                <div class="flex items-center gap-2 mb-2">
-                                    <input type="radio" name="mc-correct" value="0" checked>
-                                    <label class="font-bold">Option 1 (Correct)</label>
-                                </div>
-                                <input type="text" placeholder="Option Text" class="input-field mb-2 mc-option-text">
-                                <input type="text" placeholder="Option Image URL" class="input-field mb-0 mc-option-image">
-                            </div>
-                            <div class="p-3 border rounded-lg bg-slate-50">
-                                <div class="flex items-center gap-2 mb-2">
-                                    <input type="radio" name="mc-correct" value="1">
-                                    <label class="font-bold">Option 2</label>
-                                </div>
-                                <input type="text" placeholder="Option Text" class="input-field mb-2 mc-option-text">
-                                <input type="text" placeholder="Option Image URL" class="input-field mb-0 mc-option-image">
-                            </div>
-                        </div> <button type="button" id="add-mc-option-btn" class="btn btn-secondary w-full mt-2">Add Option</button>`;
-                    break;
-                case 'coloring':
-                    formHtml += `<input type="text" id="coloring-svg-url" class="input-field" placeholder="Coloring SVG Image URL">`;
+                        <div class="upload-container">
+                            <input type="text" id="mc-image-url" placeholder="Optional: Main Question Image URL" class="input-field mb-0">
+                            <button type="button" class="btn btn-primary upload-btn" data-type="image"><i class="fas fa-upload"></i></button>
+                            <button type="button" class="btn btn-secondary history-btn" data-type="image"><i class="fas fa-history"></i></button>
+                        </div>
+                        <div id="mc-options-container" class="space-y-3 mt-3"></div> 
+                        <button type="button" id="add-mc-option-btn" class="btn btn-secondary w-full mt-2">Add Option</button>`;
                     break;
                 case 'pronunciation':
                      formHtml += `<input type="text" id="pronounce-word" placeholder="Word to pronounce" class="input-field">
-                        <input type="text" id="pronounce-image-url" placeholder="Optional: Image URL" class="input-field">
-                        <input type="text" id="pronounce-audio-url" placeholder="Audio URL for 'listen' button" class="input-field">`;
+                        <div class="upload-container my-2">
+                           <input type="text" id="pronounce-image-url" placeholder="Optional: Image URL" class="input-field mb-0">
+                           <button type="button" class="btn btn-primary upload-btn" data-type="image"><i class="fas fa-upload"></i></button>
+                           <button type="button" class="btn btn-secondary history-btn" data-type="image"><i class="fas fa-history"></i></button>
+                        </div>
+                        <div class="upload-container">
+                            <input type="text" id="pronounce-audio-url" placeholder="Audio URL for 'listen' button" class="input-field mb-0">
+                            <button type="button" class="btn btn-primary upload-btn" data-type="audio"><i class="fas fa-upload"></i></button>
+                            <button type="button" class="btn btn-secondary history-btn" data-type="audio"><i class="fas fa-history"></i></button>
+                        </div>`;
                     break;
                  case 'complete_sentence':
                     formHtml += `
@@ -2688,35 +2913,93 @@
                     break;
                 case 'matching':
                      formHtml += `
-                        <div id="matching-pairs-container" class="space-y-3">
-                             <div class="flex gap-2"><input type="text" placeholder="Item 1" class="input-field mb-0 match-prompt"><input type="text" placeholder="Match 1" class="input-field mb-0 match-answer"></div>
-                             <div class="flex gap-2"><input type="text" placeholder="Item 2" class="input-field mb-0 match-prompt"><input type="text" placeholder="Match 2" class="input-field mb-0 match-answer"></div>
-                        </div><button type="button" id="add-match-pair-btn" class="btn btn-secondary w-full mt-2">Add Pair</button>`;
+                        <div id="matching-pairs-container" class="space-y-3"></div>
+                        <button type="button" id="add-match-pair-btn" class="btn btn-secondary w-full mt-2">Add Pair</button>`;
                     break;
                 case 'arrange_words': formHtml += `<input type="text" id="arrange-text" placeholder="Sentence to arrange (e.g., I love my school)" class="input-field">`; break;
                 case 'trace_word': formHtml += `<input type="text" id="trace-text" placeholder="Word to trace" class="input-field">`; break;
             }
             container.innerHTML = commonHtml + formHtml;
+            container.querySelectorAll('.upload-btn').forEach(btn => btn.addEventListener('click', handleUploadClick));
+            container.querySelectorAll('.history-btn').forEach(btn => btn.addEventListener('click', handleHistoryClick));
             
             if (type === 'multiple_choice') {
+                addMcOption(null, 0, true);
+                addMcOption(null, 1, false);
                 document.getElementById('add-mc-option-btn').addEventListener('click', () => {
                     const optionsContainer = document.getElementById('mc-options-container');
-                    const newIndex = optionsContainer.children.length;
-                    optionsContainer.insertAdjacentHTML('beforeend', `
-                    <div class="p-3 border rounded-lg bg-slate-50">
-                        <div class="flex items-center gap-2 mb-2">
-                            <input type="radio" name="mc-correct" value="${newIndex}">
-                            <label class="font-bold">Option ${newIndex + 1}</label>
-                        </div>
-                        <input type="text" placeholder="Option Text" class="input-field mb-2 mc-option-text">
-                        <input type="text" placeholder="Option Image URL" class="input-field mb-0 mc-option-image">
-                    </div>`);
+                    addMcOption(null, optionsContainer.children.length, false);
                 });
             } else if (type === 'matching') {
-                 document.getElementById('add-match-pair-btn').addEventListener('click', () => {
-                    document.getElementById('matching-pairs-container').insertAdjacentHTML('beforeend', `<div class="flex gap-2"><input type="text" placeholder="Item" class="input-field mb-0 match-prompt"><input type="text" placeholder="Match" class="input-field mb-0 match-answer"></div>`);
-                });
+                addMatchingPair();
+                addMatchingPair();
+                 document.getElementById('add-match-pair-btn').addEventListener('click', () => addMatchingPair());
             }
+        }
+
+        function addMcOption(optionData = null, index = 0, isCorrect = false) {
+            const optionsContainer = document.getElementById('mc-options-container');
+            const newOption = document.createElement('div');
+            newOption.className = "p-3 border rounded-lg bg-slate-50";
+            newOption.innerHTML = `
+                <div class="flex items-center justify-between gap-2 mb-2">
+                    <label class="font-bold flex items-center gap-2">
+                        <input type="radio" name="mc-correct" value="${index}" ${isCorrect ? 'checked' : ''}>
+                        Option ${index + 1} ${isCorrect ? '(Correct)' : ''}
+                    </label>
+                    <button class="text-red-500 remove-mc-option-btn"><i class="fas fa-trash"></i></button>
+                </div>
+                <input type="text" placeholder="Option Text" class="input-field mb-2 mc-option-text" value="${(optionData?.type === 'text' ? optionData.value : '') || ''}">
+                <div class="upload-container">
+                    <input type="text" placeholder="Option Image URL" class="input-field mb-0 mc-option-image" value="${(optionData?.type === 'image' ? optionData.value : '') || ''}">
+                    <button type="button" class="btn btn-primary upload-btn upload-btn-sm" data-type="image"><i class="fas fa-upload"></i></button>
+                    <button type="button" class="btn btn-secondary history-btn history-btn-sm" data-type="image"><i class="fas fa-history"></i></button>
+                </div>`;
+            optionsContainer.appendChild(newOption);
+            newOption.querySelectorAll('.upload-btn').forEach(btn => btn.addEventListener('click', handleUploadClick));
+            newOption.querySelectorAll('.history-btn').forEach(btn => btn.addEventListener('click', handleHistoryClick));
+            newOption.querySelector('.remove-mc-option-btn').addEventListener('click', () => newOption.remove());
+        }
+        
+        function addMatchingPair(pairData = null) {
+            const container = document.getElementById('matching-pairs-container');
+            const newPair = document.createElement('div');
+            newPair.className = "matching-pair-item p-3 border rounded-lg bg-slate-50";
+            newPair.innerHTML = `
+                <div class="grid grid-cols-2 gap-2">
+                    <p class="font-bold col-span-1">${getTranslation('prompt')}</p>
+                    <p class="font-bold col-span-1">${getTranslation('answer')}</p>
+                </div>
+                <div class="grid grid-cols-2 gap-2 items-start">
+                    <div>
+                        <select class="input-field mb-1 match-prompt-type">
+                            <option value="text" ${pairData?.prompt.type === 'text' ? 'selected' : ''}>${getTranslation('text')}</option>
+                            <option value="image" ${pairData?.prompt.type === 'image' ? 'selected' : ''}>${getTranslation('image')}</option>
+                        </select>
+                        <div class="upload-container">
+                            <input type="text" placeholder="${getTranslation('itemValue')}" class="input-field mb-0 match-prompt-value" value="${pairData?.prompt.value || ''}">
+                            <button type="button" class="btn btn-primary upload-btn upload-btn-sm" data-type="image"><i class="fas fa-upload"></i></button>
+                            <button type="button" class="btn btn-secondary history-btn history-btn-sm" data-type="image"><i class="fas fa-history"></i></button>
+                        </div>
+                    </div>
+                    <div>
+                        <select class="input-field mb-1 match-answer-type">
+                            <option value="text" ${pairData?.answer.type === 'text' ? 'selected' : ''}>${getTranslation('text')}</option>
+                            <option value="image" ${pairData?.answer.type === 'image' ? 'selected' : ''}>${getTranslation('image')}</option>
+                        </select>
+                         <div class="upload-container">
+                            <input type="text" placeholder="${getTranslation('itemValue')}" class="input-field mb-0 match-answer-value" value="${pairData?.answer.value || ''}">
+                            <button type="button" class="btn btn-primary upload-btn upload-btn-sm" data-type="image"><i class="fas fa-upload"></i></button>
+                            <button type="button" class="btn btn-secondary history-btn history-btn-sm" data-type="image"><i class="fas fa-history"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <button class="remove-match-pair-btn text-red-500 mt-2 w-full text-center"><i class="fas fa-trash"></i> Remove Pair</button>
+            `;
+            container.appendChild(newPair);
+            newPair.querySelectorAll('.upload-btn').forEach(btn => btn.addEventListener('click', handleUploadClick));
+            newPair.querySelectorAll('.history-btn').forEach(btn => btn.addEventListener('click', handleHistoryClick));
+            newPair.querySelector('.remove-match-pair-btn').addEventListener('click', () => newPair.remove());
         }
         
         // --- Shop Functions ---
@@ -2821,13 +3104,168 @@
             }
         }
         
+        // --- GitHub Upload and File History Functions ---
+        function getGitHubConfig() {
+            const config = localStorage.getItem('github_config');
+            return config ? JSON.parse(config) : null;
+        }
+
+        function saveGitHubConfig() {
+            const config = {
+                username: document.getElementById('github-username').value.trim(),
+                repo: document.getElementById('github-repo').value.trim(),
+                token: document.getElementById('github-token').value.trim(),
+            };
+            localStorage.setItem('github_config', JSON.stringify(config));
+            showToast('configSaved');
+        }
+
+        function loadGitHubConfig() {
+            const config = getGitHubConfig();
+            if (config) {
+                document.getElementById('github-username').value = config.username || '';
+                document.getElementById('github-repo').value = config.repo || '';
+                document.getElementById('github-token').value = config.token || '';
+            }
+        }
+
+        function isGitHubConfigured() {
+            const config = getGitHubConfig();
+            return config && config.username && config.repo && config.token;
+        }
+
+        function handleUploadClick(e) {
+            const button = e.currentTarget;
+            if (!isGitHubConfigured()) {
+                showToast('githubConfigWarning', 'error');
+                return;
+            }
+            activeUrlInput = button.previousElementSibling;
+            const fileInput = document.createElement('input');
+            fileInput.type = 'file';
+            const type = button.dataset.type;
+            fileInput.accept = type === 'image' ? 'image/png, image/jpeg, image/gif, image/svg+xml' : 'audio/mpeg, audio/wav, audio/ogg';
+            
+            fileInput.onchange = async (event) => {
+                const file = event.target.files[0];
+                if (!file) return;
+                
+                if(!button.dataset.originalText) button.dataset.originalText = button.innerHTML;
+                button.disabled = true;
+                button.innerHTML = `<svg class="animate-spin h-5 w-5" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>`;
+                
+                try {
+                    const downloadUrl = await uploadToGitHub(file);
+                    if (activeUrlInput) {
+                        activeUrlInput.value = downloadUrl;
+                    }
+                    await setDoc(doc(collection(db, 'fileHistory')), {
+                        name: file.name,
+                        url: downloadUrl,
+                        type: type,
+                        createdAt: serverTimestamp()
+                    });
+                    showToast('File uploaded successfully!');
+                } catch (error) {
+                    console.error("Upload failed:", error);
+                    showToast(`Upload failed: ${error.message}`, 'error');
+                } finally {
+                    button.disabled = false;
+                    button.innerHTML = button.dataset.originalText;
+                }
+            };
+            fileInput.click();
+        }
+
+        async function uploadToGitHub(file) {
+            const base64content = await fileToBase64(file);
+            const { username, repo, token } = getGitHubConfig();
+            const path = `${file.type.split('/')[0]}s/${Date.now()}-${file.name}`;
+            const url = `https://api.github.com/repos/${username}/${repo}/contents/${path}`;
+
+            const response = await fetch(url, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `token ${token}`,
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    message: `feat: upload ${file.name}`,
+                    content: base64content,
+                }),
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.message || 'Failed to upload to GitHub.');
+            }
+
+            const data = await response.json();
+            return data.content.download_url;
+        }
+
+        async function handleHistoryClick(e) {
+            if (!isGitHubConfigured()) {
+                showToast('githubConfigWarning', 'error');
+                return;
+            }
+            activeUrlInput = e.currentTarget.previousElementSibling.previousElementSibling;
+            const type = e.currentTarget.dataset.type;
+            
+            const modal = document.getElementById('file-history-modal');
+            const grid = document.getElementById('file-history-grid');
+            grid.innerHTML = '<div class="loader"></div>';
+            modal.classList.remove('hidden');
+
+            try {
+                const q = query(collection(db, 'fileHistory'), orderBy('createdAt', 'desc'));
+                const querySnapshot = await getDocs(q);
+                const files = [];
+                querySnapshot.forEach(doc => files.push({ id: doc.id, ...doc.data() }));
+
+                if (files.length === 0) {
+                    grid.innerHTML = `<p class="text-center col-span-full">${getTranslation('noFiles')}</p>`;
+                    return;
+                }
+
+                grid.innerHTML = files.filter(f => f.type === type).map(file => `
+                    <div class="vocab-card" data-url="${file.url}">
+                        ${type === 'image' 
+                            ? `<img src="${file.url}" alt="${file.name}">` 
+                            : `<div class="text-5xl p-10"><i class="fas fa-music"></i></div>`
+                        }
+                        <h3>${file.name}</h3>
+                    </div>
+                `).join('');
+
+                grid.querySelectorAll('.vocab-card').forEach(card => {
+                    card.addEventListener('click', () => {
+                        if (activeUrlInput) {
+                            activeUrlInput.value = card.dataset.url;
+                        }
+                        modal.classList.add('hidden');
+                    });
+                });
+
+            } catch (error) {
+                console.error("Error fetching file history:", error);
+                grid.innerHTML = `<p class="text-red-500">${error.message}</p>`;
+            }
+        }
+        
+        function updateMusicButtonState() {
+             const toggle = document.getElementById('sound-toggle');
+             toggle.classList.toggle('muted', isMusicMuted);
+             toggle.querySelector('i').className = isMusicMuted ? 'fas fa-music-slash' : 'fas fa-music';
+        }
+
         // --- Initial Load ---
         (async () => {
             showPage('loader');
-            await loadGameSounds();
+            await loadGameData();
             setupEventListeners();
+            updateMusicButtonState();
             updateLanguage();
-            // Auth state will trigger initial page show logic
         })();
     </script>
 </body>
